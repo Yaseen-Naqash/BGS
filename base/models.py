@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator #NOTe
 # When working directly with the model, make sure to call the model full_clean
 # method before saving the model in order to trigger the validators. 
-#This is not required when using ModelForm since the forms will do that automatically.
+# This is not required when using ModelForm since the forms will do that automatically.
 
 
 # Create your models here.

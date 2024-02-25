@@ -1,1 +1,54 @@
-<h1>hello world this is a boardgame shop</h1>
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+        
+        padding: 10px;
+    }
+    .grid-item-container{
+        background-color: lightgrey;
+    }
+    .game-name-container{
+        display: flex;
+        flex-direction: row;
+        background-color: aqua;
+    }
+</style>
+<div class="home-container">
+    <h1 dir="rtl" align="right"> آخرین آگهی ها ({{deals.count}} آگهی در این هفته ) </h1>
+    <h1 dir="rtl" align="right">دسته بندی ها </h1>
+    <div class="grid-container"> <!--heres the deals-->
+        {% for deal in deals %}
+        <div class="grid-item-container">
+            <h3 dir="rtl">{{deal.title}}</h3>
+            <p dir="rtl">{{deal.description}}</p>
+            <div class="game-name-container">
+                {% for boardgame in deal.stock.all %}
+            
+                <h5> _ {{boardgame.name}} _ </h5>
+                
+            
+                {% endfor %}
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+    <div> <!--heres the categories-->
+        <a href="{% url 'homeurl' %}?q="><h3 dir="rtl">all</h3></a>
+        {% for topic in topics %}
+        <a href="{% url 'homeurl' %}?q={{topic.name}}"><h3 dir="rtl">{{topic.name}}</h3></a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

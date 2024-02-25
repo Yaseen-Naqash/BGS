@@ -1,1 +1,3 @@
-BRANCH DEVELOPE CREATED
+each deal must have a location
+each boardgame must have a image
+each user must have a default location
